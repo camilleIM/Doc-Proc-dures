@@ -1,0 +1,225 @@
+<!-- Pour re-générer search-index.json, lancer dans la console: node generate-index.js -->
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Compagnie Maritime — Documentation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+<body>
+  <aside class="sidebar" aria-label="Navigation principale">
+    <div class="brand">
+      <div class="logo">
+        <img src="logos/Capture d’écran 2025-10-16 à 11.08.01.png" alt="" />
+      </div>
+      <div class="title">
+        <h1><a href="index.html">Icard Maritime</a></h1>
+        <p>Groupe Lamanage</p>
+        <p>Documentation & procédures</p>
+      </div>
+    </div>
+
+    <div class="search">
+      <input id="search" placeholder="Rechercher dans la doc..." />
+      <div id="results"></div>
+      <script src="search.js"></script>
+    </div>
+
+    <!-- tout ton menu ici -->
+    <nav>
+      <ul class="menu">
+        <li>
+          <a href="Histoire de la compagnie.html">Histoire de la compagnie</a>
+        </li>
+
+        <li class="collapsible">
+          <button class="collapser" data-target="services">
+            Les services <span class="chev">▸</span>
+          </button>
+          <ul id="services" class="submenu" hidden>
+            <li>
+              <a href="Navettes Frioul.html">Navettes Frioul</a>
+            </li>
+            <li>Navettes Estaque/PR/Goudes</li>
+            <li>Calanques</li>
+            <li>If</li>
+            <li>Privatisation</li>
+            <li>Plongée</li>
+            <li>Croisiéristes</li>
+            <li>Écum</li>
+          </ul>
+        </li>
+
+        <li class="collapsible">
+          <button class="collapser" data-target="moyens">
+            Les moyens <span class="chev">▸</span>
+          </button>
+          <ul id="moyens" class="submenu" hidden>
+            <li>Infrastructures à terre</li>
+            <li>Billetterie</li>
+            <li>Gare maritime</li>
+            <li>Bureaux</li>
+            <li>Locaux techniques</li>
+          </ul>
+        </li>
+
+        <li class="collapsible">
+          <button class="collapser" data-target="quais">
+            Quais d’embarquement <span class="chev">▸</span>
+          </button>
+          <ul id="quais" class="submenu" hidden>
+            <li>Vieux port gare QBG</li>
+            <li>Vieux port calanques QBC</li>
+            <li>Vieux port Pagnol QMP</li>
+            <li>Vieux port GO</li>
+            <li>Frioul gare FRG</li>
+            <li>Frioul Léo Léo</li>
+            <li>Château d’If IFN</li>
+            <li>Pointe-Rouge RTM</li>
+            <li>Pointe-Rouge GO</li>
+            <li>Goudes</li>
+            <li>Estaques</li>
+            <li>Mucem</li>
+            <li>GPMM</li>
+          </ul>
+        </li>
+
+        <li><a href="#">Les navires</a></li>
+
+        <li class="collapsible">
+          <button class="collapser" data-target="fiches">
+            Fiches de poste détaillées <span class="chev">▸</span>
+          </button>
+          <ul id="fiches" class="submenu" hidden>
+            <li>Marin</li>
+            <li>Chef mécanicien</li>
+            <li>Capitaine</li>
+          </ul>
+        </li>
+
+        <li><a href="#">Navires-techniques</a></li>
+        <li><a href="#">Navires-procédures</a></li>
+        <li><a href="#">Navires-sécurité</a></li>
+        <li><a href="#">Matelotages divers</a></li>
+        <li><a href="#">Secourisme</a></li>
+        <li><a href="#">Sécurité passagers</a></li>
+        <li><a href="#">Recommandations face à un conflit</a></li>
+        <li><a href="#">Procédures à suivre suivant les services</a></li>
+        <li><a href="#">Numéros importants</a></li>
+
+        <li class="collapsible">
+          <button class="collapser" data-target="meteo">
+            Météo <span class="chev">▸</span>
+          </button>
+          <ul id="meteo" class="submenu" hidden>
+            <li>Locale</li>
+            <li>Internet et CN</li>
+            <li>Bouée Planier</li>
+          </ul>
+        </li>
+
+        <li><a href="#">Radio</a></li>
+
+        <li class="collapsible">
+          <button class="collapser" data-target="zones">
+            Zone de navigation <span class="chev">▸</span>
+          </button>
+          <ul id="zones" class="submenu" hidden>
+            <li>Cartes</li>
+            <li>Les différents ports</li>
+            <li>Points sensibles</li>
+            <li>Zone de restrictions</li>
+            <li>PNC</li>
+          </ul>
+        </li>
+
+        <li><a href="#">Eco-gestes</a></li>
+        <li><a href="#">Info diverses maritimes</a></li>
+        <li><a href="#">Techniques de pêches locales</a></li>
+
+        <li class="collapsible">
+          <button class="collapser" data-target="reglementation">
+            Réglementation <span class="chev">▸</span>
+          </button>
+          <ul id="reglementation" class="submenu" hidden>
+            <li>Différents documents</li>
+            <li>CN</li>
+          </ul>
+        </li>
+
+        <li class="collapsible">
+          <button class="collapser" data-target="utilitaires">
+            Utilitaires <span class="chev">▸</span>
+          </button>
+          <ul id="utilitaires" class="submenu" hidden>
+            <li>Numéros utiles</li>
+            <li>Applications utiles</li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div style="position: sticky; bottom: 12px; margin-top: 12px">
+      <small style="color: var(--muted)">
+        Dernière mise à jour : <strong>15/10/2025</strong>
+      </small>
+    </div>
+  </aside>
+</body>
+
+  
+
+   </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+      document
+        .getElementById("exportPdfBtn")
+        .addEventListener("click", function () {
+          const element =
+            document.querySelector("main") ||
+            document.getElementById("content");
+
+          const options = {
+            margin: 0.5,
+            filename: document.title.replace(/\s+/g, "_") + ".pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+          };
+
+          html2pdf().set(options).from(element).save();
+        });
+    </script>
+    <script>
+      const collapsers = document.querySelectorAll(".collapser");
+      collapsers.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = document.getElementById(btn.dataset.target);
+          const chev = btn.querySelector(".chev");
+
+          document.querySelectorAll(".submenu").forEach((menu) => {
+            if (menu !== target) {
+              menu.classList.remove("open");
+              menu.hidden = true;
+              const otherChev = menu.parentElement.querySelector(".chev");
+              if (otherChev) otherChev.classList.remove("open");
+            }
+          });
+
+          target.hidden = !target.hidden;
+          chev.classList.toggle("open");
+          target.classList.toggle("open");
+        });
+      });
+    </script>
+</html>

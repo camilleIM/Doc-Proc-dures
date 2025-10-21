@@ -1,0 +1,16 @@
+{
+  "name": "site-formation-im",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate-index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node generate-index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^24.0.0"
+  }
+}

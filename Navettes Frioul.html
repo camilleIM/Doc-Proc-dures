@@ -1,0 +1,125 @@
+<!-- Pour re-générer search-index.json, lancer dans la console: node generate-index.js -->
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Compagnie Maritime — Documentation</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <nav>
+        <div id="sidebar-container"></div>
+      </nav>
+      <main>
+        <div class="topbar">
+          <div class="breadcrumbs">Les services/Navettes Frioul</div>
+          <div class="actions">
+            <button id="exportPdfBtn">📄 Exporter en PDF</button>
+          </div>
+        </div>
+        <div class="texte">
+          <h1>Navettes Frioul</h1>
+          <h2>Sous titre</h2>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
+            odio libero ab ea quas eum consequuntur ducimus obcaecati
+            dignissimos quasi voluptas suscipit culpa, necessitatibus aliquam
+            cupiditate corporis, molestiae dolore dicta.Lorem ipsum dolor sit
+            amet consectetur adipisicing elit. Dicta, consectetur animi aut,
+            itaque fugiat delectus dolor optio fuga rerum earum dolores placeat.
+            Quae quis repellendus deleniti doloribus? Placeat iure eum nulla
+            explicabo ad eius, illo et esse in beatae eos quia laborum omnis ea
+            mollitia ipsum natus sequi quas rerum.
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Charger la sidebar depuis un fichier externe
+      fetch("sidebar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("sidebar-container").innerHTML = data;
+
+          // Initialiser les menus déroulants APRÈS le chargement de la sidebar
+          const collapsers = document.querySelectorAll(".collapser");
+          collapsers.forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const target = document.getElementById(btn.dataset.target);
+              const chev = btn.querySelector(".chev");
+
+              document.querySelectorAll(".submenu").forEach((menu) => {
+                if (menu !== target) {
+                  menu.classList.remove("open");
+                  menu.hidden = true;
+                  const otherChev = menu.parentElement.querySelector(".chev");
+                  if (otherChev) otherChev.classList.remove("open");
+                }
+              });
+
+              target.hidden = !target.hidden;
+              chev.classList.toggle("open");
+              target.classList.toggle("open");
+            });
+          });
+        })
+        .catch((err) =>
+          console.error("Erreur lors du chargement de la sidebar :", err)
+        );
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+      document
+        .getElementById("exportPdfBtn")
+        .addEventListener("click", function () {
+          const element =
+            document.querySelector("main") ||
+            document.getElementById("content");
+
+          const options = {
+            margin: 0.5,
+            filename: document.title.replace(/\s+/g, "_") + ".pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+          };
+
+          html2pdf().set(options).from(element).save();
+        });
+    </script>
+    <script>
+      const collapsers = document.querySelectorAll(".collapser");
+      collapsers.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = document.getElementById(btn.dataset.target);
+          const chev = btn.querySelector(".chev");
+
+          document.querySelectorAll(".submenu").forEach((menu) => {
+            if (menu !== target) {
+              menu.classList.remove("open");
+              menu.hidden = true;
+              const otherChev = menu.parentElement.querySelector(".chev");
+              if (otherChev) otherChev.classList.remove("open");
+            }
+          });
+
+          target.hidden = !target.hidden;
+          chev.classList.toggle("open");
+          target.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>
