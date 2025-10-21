@@ -5,6 +5,9 @@ on:
     branches:
       - main  # ou "master" selon ton dépôt
 
+permissions:
+  contents: write  # ✅ autorise le bot à pousser les fichiers
+
 jobs:
   build:
     runs-on: ubuntu-latest
