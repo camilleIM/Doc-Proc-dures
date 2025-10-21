@@ -1,0 +1,33 @@
+name: Générer search-index.json
+
+on:
+  push:
+    branches:
+      - main  # ou "master" selon ton dépôt
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Cloner le dépôt
+        uses: actions/checkout@v4
+
+      - name: 🟢 Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📦 Installer les dépendances
+        run: npm install jsdom
+
+      - name: 🧠 Générer le fichier d’index
+        run: node generate-index.js
+
+      - name: 🧾 Commit du nouveau fichier search-index.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add search-index.json
+          git commit -m "Mise à jour automatique du search-index.json" || echo "Aucun changement à valider"
+          git push
